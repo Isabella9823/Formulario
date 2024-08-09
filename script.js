@@ -10,31 +10,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para validar o nome
     function validateNome() {
         const nome = nomeInput.value.trim();
-        if (nome.length > 0) {
+        const nomePattern = /^[A-Za-z]{3,}$/;
+        if (nomePattern.test(nome)) {
             nomeError.textContent = '';
         } else {
-            nomeError.textContent = 'O nome é obrigatório.';
+            nomeError.textContent = 'O nome deve conter apenas letras e ter pelo menos 3 caracteres.';
         }
     }
 
     // Função para validar o e-mail
     function validateEmail() {
         const email = emailInput.value.trim();
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailPattern = /^[^\s@]{5,}@[^\s@]+\.[^\s@]{2,}$/;
         if (emailPattern.test(email)) {
             emailError.textContent = '';
         } else {
-            emailError.textContent = 'E-mail inválido.';
+            emailError.textContent = 'E-mail inválido. Deve conter pelo menos 5 caracteres antes do "@" e pelo menos 3 caracteres após o "@"';
         }
     }
 
     // Função para validar a mensagem
     function validateMensagem() {
         const mensagem = mensagemInput.value.trim();
-        if (mensagem.length > 0) {
+        if (mensagem.length >= 10) {
             mensagemError.textContent = '';
         } else {
-            mensagemError.textContent = 'A mensagem é obrigatória.';
+            mensagemError.textContent = 'A mensagem deve ter pelo menos 10 caracteres.';
         }
     }
 
